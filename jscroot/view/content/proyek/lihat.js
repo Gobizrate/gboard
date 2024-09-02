@@ -1,14 +1,11 @@
 import {
   getValue,
-  onInput,
+  onClick,
 } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.1.7/croot.js";
 import { validatePhoneNumber } from "https://cdn.jsdelivr.net/gh/jscroot/validate@0.0.2/croot.js";
-import { postJSON } from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.7/croot.js";
-import { deleteJSON } from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.8/croot.js";
-import { putJSON } from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.8/croot.js";
-import { getJSON } from "https://cdn.jsdelivr.net/gh/jscroot/api@0.0.7/croot.js";
 import { getCookie } from "https://cdn.jsdelivr.net/gh/jscroot/cookie@0.0.1/croot.js";
 import { addCSSIn } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.1.5/croot.js";
+import {postFileWithHeader,postJSON,deleteJSON,putJSON,getJSON} from "https://cdn.jsdelivr.net/gh/jscroot/lib@0.0.4/api.js";
 import Swal from "https://cdn.jsdelivr.net/npm/sweetalert2@11/src/sweetalert2.js";
 import { id, backend } from "../../../url/config.js";
 import { loadScript } from "../../../controller/main.js";
@@ -166,12 +163,24 @@ function addMemberButtonListeners() {
               <input class="input" type="number" id="price" name="price" placeholder="7500" required>
             </div>
           </div>
+          <div class="field">
+            <label class="label">Upload Gambar Menu</label>
+            <div class="control">
+                <input class="input" type="file" id="fileInput" name="file" required>
+            </div>
+          </div>
+          <div class="field">
+              <div class="control">
+                  <button class="button is-primary" id="uploadButton">Upload</button>
+              </div>
+          </div>
         `,
         showCancelButton: true,
         confirmButtonText: "Tambah Menu",
         didOpen: () => {
           // Memanggil fungsi onInput setelah dialog SweetAlert2 dibuka
           // onInput("phonenumber", validatePhoneNumber);
+          onClick('uploadButton',uploadMenuFile);
         },
         preConfirm: () => {
           const id = document.getElementById("id").value;
@@ -205,6 +214,20 @@ function addMemberButtonListeners() {
       }
     });
   });
+}
+
+
+async function uploadMenuFile(){
+  const targetUrl = backend.upload.menu+document.getElementById("project-id").value; // Ganti dengan URL backend Anda
+  const fileInputId = 'fileInput';
+  const formDataName = 'menufile'; // Sesuaikan dengan nama form-data di backend
+
+  try {
+      const result = await postFileWithHeader(targetUrl, "login", getCookie('login'), fileInputId, formDataName);
+      document.getElementById('response').textContent = `Upload Successful: ${JSON.stringify(result)}`;
+  } catch (error) {
+      document.getElementById('response').textContent = `Upload Failed: ${error.message}`;
+  }
 }
 
 // Add project event listener
