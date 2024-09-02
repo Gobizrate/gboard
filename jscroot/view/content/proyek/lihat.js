@@ -136,7 +136,7 @@ function addMemberButtonListeners() {
         title: "Menu "+projectName,
         html: `
           <div class="field">
-            <label class="label">Upload Gambar Menu</label>
+            <label class="label">Gambar Menu</label>
             <div class="control">
                 <input class="input" type="file" id="fileInput" name="file" required>
             </div>
@@ -216,12 +216,12 @@ function uploadMenuFile(){
 }
 
 function runafterUploadFileMenu(result){
-  setValue('id',result.url);
+  setValue('id',result.info);
   document.getElementById('fileInput').style.display = 'none';
   document.getElementById('uploadButton').style.display = 'none';
   const imageField = document.getElementById('imageField');
   const uploadedImage = document.getElementById('uploadedImage');
-  uploadedImage.src = imageUrl;
+  uploadedImage.src = "/img/"+result.location;
   imageField.style.display = 'block';
   console.log(result);
 
