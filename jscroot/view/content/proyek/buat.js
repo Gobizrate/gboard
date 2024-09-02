@@ -20,7 +20,7 @@ function actionfunctionname(){
         description:getValue("description")
     };
     if (getCookie("login")===""){
-        redirect("/signin");
+        redirect("/login");
     }else{
         postJSON(backend.project.data,"login",getCookie("login"),project,responseFunction);
         hide("tombolbuatproyek");

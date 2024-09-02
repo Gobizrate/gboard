@@ -285,7 +285,7 @@ document.getElementById("addButton").addEventListener("click", () => {
         description: getValue("description"),
       };
       if (getCookie("login") === "") {
-        redirect("/signin");
+        redirect("/login");
       } else {
         postJSON(
           backend.project.data,

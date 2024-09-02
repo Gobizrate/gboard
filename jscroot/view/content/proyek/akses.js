@@ -19,7 +19,7 @@ function actionfunctionname(){
         phonenumber:getValue("phonenumber")
     };
     if (getCookie("login")===""){
-        redirect("/signin");
+        redirect("/login");
     }else{
         postJSON(backend.project.anggota,"login",getCookie("login"),idprjusr,postResponseFunction);
         hide("tombolbuatproyek");
