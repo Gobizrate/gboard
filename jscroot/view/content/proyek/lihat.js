@@ -193,7 +193,7 @@ function addMemberButtonListeners() {
           _id: projectId,
           id: id,
           name:name,
-          price:price,
+          price:Number(price),
         };
         postJSON(
           backend.project.menu,
