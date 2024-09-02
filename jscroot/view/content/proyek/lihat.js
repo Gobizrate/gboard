@@ -146,6 +146,11 @@ function addMemberButtonListeners() {
                   <button class="button is-primary" id="uploadButton">Upload</button>
               </div>
           </div>
+          <div class="field" id="imageField" style="display: none;">
+              <div class="control">
+                  <img id="uploadedImage" src="" alt="Uploaded Image" style="max-width: 100%;">
+              </div>
+          </div>
           <div class="field">
             <div class="control">
               <label class="label">Nama Menu</label>
@@ -212,6 +217,12 @@ function uploadMenuFile(){
 
 function runafterUploadFileMenu(result){
   setValue('id',result.url);
+  document.getElementById('fileInput').style.display = 'none';
+  document.getElementById('uploadButton').style.display = 'none';
+  const imageField = document.getElementById('imageField');
+  const uploadedImage = document.getElementById('uploadedImage');
+  uploadedImage.src = imageUrl;
+  imageField.style.display = 'block';
   console.log(result);
 
 }
