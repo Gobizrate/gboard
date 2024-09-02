@@ -228,7 +228,7 @@ document.getElementById("addButton").addEventListener("click", () => {
         Swal.showValidationMessage(`Please enter all fields`);
       } else if (!namePattern.test(name)) {
         Swal.showValidationMessage(
-          `Project Name hanya boleh mengandung huruf kecil, angka, '-' dan '_'`
+          `Lapak User Name hanya boleh mengandung huruf kecil, angka, '-' dan '_'`
         );
       } else {
         return {
@@ -242,7 +242,7 @@ document.getElementById("addButton").addEventListener("click", () => {
     if (result.isConfirmed) {
       let resultData = {
         name: getValue("name"),
-        wagroupid: getValue("title"),
+        title: getValue("title"),
         description: getValue("description"),
       };
       if (getCookie("login") === "") {
