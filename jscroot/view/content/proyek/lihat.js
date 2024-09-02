@@ -167,12 +167,8 @@ function addMemberButtonListeners() {
             <label class="label">Upload Gambar Menu</label>
             <div class="control">
                 <input class="input" type="file" id="fileInput" name="file" required>
+                <button class="button is-primary" id="uploadButton">Upload</button>
             </div>
-          </div>
-          <div class="field">
-              <div class="control">
-                  <button class="button is-primary" id="uploadButton">Upload</button>
-              </div>
           </div>
         `,
         showCancelButton: true,
@@ -217,11 +213,11 @@ function addMemberButtonListeners() {
 }
 
 
-async function uploadMenuFile(){
+function uploadMenuFile(){
   const targetUrl = backend.upload.menu+document.getElementById("project-id").value; // Ganti dengan URL backend Anda
   const fileInputId = 'fileInput';
   const formDataName = 'menufile'; // Sesuaikan dengan nama form-data di backend
-  await postFileWithHeader(targetUrl, "login", getCookie('login'), fileInputId, formDataName,runafterUploadFileMenu);
+  postFileWithHeader(targetUrl, "login", getCookie('login'), fileInputId, formDataName,runafterUploadFileMenu);
 }
 
 function runafterUploadFileMenu(result){
