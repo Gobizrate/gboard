@@ -148,15 +148,9 @@ function addMemberButtonListeners() {
           </div>
           <div class="field">
             <div class="control">
-              <label class="label">Nama Lapak</label>
+              <label class="label">Nama Menu</label>
               <input type="hidden" id="project-id" name="projectId" value="${projectId}">
               <input type="hidden" id="id" name="id">
-              <input class="input" type="text" value="${projectName}" disabled>
-            </div>
-          </div>
-          <div class="field">
-            <label class="label">Nama  Menu</label>
-            <div class="control">
               <input class="input" type="text" id="name" name="name" placeholder="Kue Basah Basahan" required>
             </div>
           </div>
