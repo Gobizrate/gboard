@@ -139,6 +139,17 @@ function addMemberButtonListeners() {
         title: "Tambah Menu",
         html: `
           <div class="field">
+            <label class="label">Upload Gambar Menu</label>
+            <div class="control">
+                <input class="input" type="file" id="fileInput" name="file" required>
+            </div>
+          </div>
+          <div class="field">
+              <div class="control">
+                  <button class="button is-primary" id="uploadButton">Upload</button>
+              </div>
+          </div>
+          <div class="field">
             <div class="control">
               <label class="label">Nama Lapak</label>
               <input type="hidden" id="project-id" name="projectId" value="${projectId}">
@@ -161,13 +172,6 @@ function addMemberButtonListeners() {
             <label class="label">Harga</label>
             <div class="control">
               <input class="input" type="number" id="price" name="price" placeholder="7500" required>
-            </div>
-          </div>
-          <div class="field">
-            <label class="label">Upload Gambar Menu</label>
-            <div class="control">
-                <input class="input" type="file" id="fileInput" name="file" required>
-                <button class="button is-primary" id="uploadButton">Upload</button>
             </div>
           </div>
         `,
