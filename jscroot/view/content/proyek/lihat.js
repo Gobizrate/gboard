@@ -64,17 +64,17 @@ function getResponseFunction(result) {
 
         // Gabungkan nama anggota dalam satu kolom dengan numbering dan tambahkan tombol Add Member
         let membersHtml =
-          project.members && project.members.length > 0
-            ? project.members
+          project.menu && project.menu.length > 0
+            ? project.menu
                 .map(
-                  (member, index) =>
+                  (mn, index) =>
                     `
                     <div class="tag is-success mb-3">
-                       ${index + 1}. ${member.name}
+                       ${index + 1}. ${mn.name}
                       <button class="delete is-small removeMemberButton" data-project-name="${
                         project.name
                       }" data-member-phonenumber="${
-                      member.phonenumber
+                      mn.price
                     }"></button>
                     </div>
                   `
