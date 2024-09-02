@@ -136,7 +136,7 @@ function addMemberButtonListeners() {
         button.getAttribute("data-project-name") ||
         button.closest("tr").querySelector("td:first-child").innerText;
       const { value: formValues } = await Swal.fire({
-        title: "Tambah Menu",
+        title: "Menu "+projectName,
         html: `
           <div class="field">
             <label class="label">Upload Gambar Menu</label>
@@ -153,13 +153,8 @@ function addMemberButtonListeners() {
             <div class="control">
               <label class="label">Nama Lapak</label>
               <input type="hidden" id="project-id" name="projectId" value="${projectId}">
+              <input type="hidden" id="id" name="id">
               <input class="input" type="text" value="${projectName}" disabled>
-            </div>
-          </div>
-          <div class="field">
-            <label class="label">Nomor Urut</label>
-            <div class="control">
-              <input class="input" type="number" id="id" name="id" placeholder="1" required>
             </div>
           </div>
           <div class="field">
