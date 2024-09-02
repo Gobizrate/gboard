@@ -84,7 +84,7 @@ function getResponseFunction(result) {
         membersHtml += `
           <button class="button box is-primary is-small btn-flex addMemberButton" data-project-id="${project._id}">
             <i class="bx bx-plus"></i>
-            Add member
+            Add menu
           </button>`;
 
         const row = document.createElement("tr");
