@@ -156,6 +156,7 @@ function addMemberButtonListeners() {
               <label class="label">Nama Menu</label>
               <input type="hidden" id="project-id" name="projectId" value="${projectId}">
               <input type="hidden" id="id" name="id">
+              <input type="hidden" id="image" name="image">
               <input class="input" type="text" id="name" name="name" placeholder="Kue Basah Basahan" required>
             </div>
           </div>
@@ -177,16 +178,17 @@ function addMemberButtonListeners() {
           const id = document.getElementById("id").value;
           const name = document.getElementById("name").value;
           const price = document.getElementById("price").value;
+          const image = document.getElementById("image").value;
           const projectId = document.getElementById("project-id").value;
-          if (!id || !name || !price) {
-            Swal.showValidationMessage(`Please enter all fields`);
+          if (!id || !name || !price || !image) {
+            Swal.showValidationMessage(`Mohon upload file dan isi semua inputan`);
           }
-          return { id,name,price, projectId };
+          return { id,name,price,image,projectId };
         },
       });
 
       if (formValues) {
-        const { id,name,price, projectId } = formValues;
+        const { id,name,price,image,projectId } = formValues;
         // Logic to add member
         //onInput("phonenumber", validatePhoneNumber);
         let idprjusr = {
@@ -194,6 +196,7 @@ function addMemberButtonListeners() {
           id: id,
           name:name,
           price:Number(price),
+          image:image,
         };
         postJSON(
           backend.project.menu,
@@ -217,11 +220,12 @@ function uploadMenuFile(){
 
 function runafterUploadFileMenu(result){
   setValue('id',result.info);
+  setValue('image',result.location);
   document.getElementById('fileInput').style.display = 'none';
   document.getElementById('uploadButton').style.display = 'none';
   const imageField = document.getElementById('imageField');
   const uploadedImage = document.getElementById('uploadedImage');
-  uploadedImage.src = "/img/"+result.location;
+  uploadedImage.src = result.location;
   imageField.style.display = 'block';
   console.log(result);
 
