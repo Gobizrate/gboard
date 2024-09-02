@@ -73,8 +73,8 @@ function getResponseFunction(result) {
                        ${index + 1}. ${mn.name} - ${mn.price}
                       <button class="delete is-small removeMemberButton" data-project-name="${
                         project.name
-                      }" data-menu-_id="${
-                      mn._id
+                      }" data-menu-id="${
+                      mn.id
                     }"></button>
                     </div>
                   `
@@ -344,7 +344,7 @@ function addRemoveMemberButtonListeners() {
   document.querySelectorAll(".removeMemberButton").forEach((button) => {
     button.addEventListener("click", async (event) => {
       const projectName = button.getAttribute("data-project-name");
-      const menuid = button.getAttribute("data-menu-_id");
+      const menuid = button.getAttribute("data-menu-id");
 
       const result = await Swal.fire({
         title: "Hapus menu ini?",
