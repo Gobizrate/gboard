@@ -139,48 +139,64 @@ function addMemberButtonListeners() {
         button.getAttribute("data-project-name") ||
         button.closest("tr").querySelector("td:first-child").innerText;
       const { value: formValues } = await Swal.fire({
-        title: "Tambah Member",
+        title: "Tambah Menu",
         html: `
           <div class="field">
             <div class="control">
-              <label class="label">Nama Project</label>
+              <label class="label">Nama Lapak</label>
               <input type="hidden" id="project-id" name="projectId" value="${projectId}">
               <input class="input" type="text" value="${projectName}" disabled>
             </div>
           </div>
           <div class="field">
-            <label class="label">Nomor Telepon Calon Member</label>
+            <label class="label">Nomor Urut</label>
             <div class="control">
-              <input class="input" type="tel" id="phonenumber" name="phonenumber" placeholder="628111" required>
+              <input class="input" type="number" id="id" name="id" placeholder="1" required>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Nama  Menu</label>
+            <div class="control">
+              <input class="input" type="text" id="name" name="name" placeholder="Kue Basah Basahan" required>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Harga</label>
+            <div class="control">
+              <input class="input" type="number" id="price" name="price" placeholder="7500" required>
             </div>
           </div>
         `,
         showCancelButton: true,
-        confirmButtonText: "Tambah Member",
+        confirmButtonText: "Tambah Menu",
         didOpen: () => {
           // Memanggil fungsi onInput setelah dialog SweetAlert2 dibuka
-          onInput("phonenumber", validatePhoneNumber);
+          // onInput("phonenumber", validatePhoneNumber);
         },
         preConfirm: () => {
-          const phoneNumber = document.getElementById("phonenumber").value;
+          const id = document.getElementById("id").value;
+          const name = document.getElementById("name").value;
+          const price = document.getElementById("price").value;
           const projectId = document.getElementById("project-id").value;
-          if (!phoneNumber) {
-            Swal.showValidationMessage(`Please enter a phone number`);
+          if (!id || !name || !price) {
+            Swal.showValidationMessage(`Please enter all fields`);
           }
-          return { phoneNumber, projectId };
+          return { id,name,price, projectId };
         },
       });
 
       if (formValues) {
-        const { phoneNumber, projectId } = formValues;
+        const { id,name,price, projectId } = formValues;
         // Logic to add member
         //onInput("phonenumber", validatePhoneNumber);
         let idprjusr = {
           _id: projectId,
-          phonenumber: phoneNumber,
+          id: id,
+          name:name,
+          price:price,
         };
         postJSON(
-          backend.project.anggota,
+          backend.project.menu,
           "login",
           getCookie("login"),
           idprjusr,

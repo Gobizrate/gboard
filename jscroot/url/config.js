@@ -17,7 +17,7 @@ export const backend={
     },
     project:{
         data:"https://asia-southeast2-awangga.cloudfunctions.net/jualin/data/proyek",
-        anggota:"https://asia-southeast2-awangga.cloudfunctions.net/jualin/data/proyek/anggota",
+        menu:"https://asia-southeast2-awangga.cloudfunctions.net/jualin/data/proyek/menu",
     },
     ux:{
         feedback:"https://asia-southeast2-awangga.cloudfunctions.net/jualin/notif/ux/postfeedback",
