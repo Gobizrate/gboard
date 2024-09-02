@@ -99,7 +99,7 @@ function getResponseFunction(result) {
             <button class="button is-danger removeProjectButton" data-project-name="${project.name}">
               <i class="bx bx-trash"></i>          
             </button>
-            <button class="button is-warning editProjectButton" data-project-id="${project._id}" data-project-name="${project.name}" data-project-wagroupid="${project.wagroupid}" data-project-repoorg="${project.repoorg}" data-project-repologname="${project.repologname}" data-project-description="${project.description}">
+            <button class="button is-warning editProjectButton" data-project-id="${project._id}" data-project-name="${project.name}" data-project-title="${project.title}" data-project-repoorg="${project.repoorg}" data-project-repologname="${project.repologname}" data-project-description="${project.description}">
               <i class="bx bx-edit"></i>
             </button>
           </td>
@@ -434,17 +434,13 @@ function addEditProjectButtonListeners() {
     button.addEventListener("click", async (event) => {
       const projectId = button.getAttribute("data-project-id");
       const projectName = button.getAttribute("data-project-name");
-      const projectWagroupid = button.getAttribute("data-project-wagroupid");
-      const projectRepoorg = button.getAttribute("data-project-repoorg");
-      const projectRepologname = button.getAttribute(
-        "data-project-repologname"
-      );
+      const projectTitle = button.getAttribute("data-project-title");
       const projectDescription = button.getAttribute(
         "data-project-description"
       );
 
       const { value: formValues } = await Swal.fire({
-        title: "Edit Project",
+        title: "Edit Lapak",
         html: `
           <div class="field">
             <label class="label">Project Name</label>
@@ -455,19 +451,7 @@ function addEditProjectButtonListeners() {
           <div class="field">
             <label class="label">WhatsApp Group ID</label>
             <div class="control">
-              <input class="input" type="text" id="wagroupid" value="${projectWagroupid}" disabled>
-            </div>
-          </div>
-          <div class="field">
-            <label class="label">Nama Repo Organisasi</label>
-            <div class="control">
-              <input class="input" type="text" id="repoorg" value="${projectRepoorg}">
-            </div>
-          </div>
-          <div class="field">
-            <label class="label">Nama Repo Log Meeting</label>
-            <div class="control">
-              <input class="input" type="text" id="repologname" value="${projectRepologname}">
+              <input class="input" type="text" id="title" value="${projectTitle}">
             </div>
           </div>
           <div class="field">
@@ -481,24 +465,21 @@ function addEditProjectButtonListeners() {
         confirmButtonText: "Update",
         cancelButtonText: "Cancel",
         preConfirm: () => {
-          const repoOrg = Swal.getPopup().querySelector("#repoorg").value;
-          const repoLogName =
-            Swal.getPopup().querySelector("#repologname").value;
+          const title = Swal.getPopup().querySelector("#title").value;
           const description =
             Swal.getPopup().querySelector("#description").value;
-          if (!repoOrg || !repoLogName || !description) {
+          if (!title || !description) {
             Swal.showValidationMessage(`Please enter all fields`);
           }
-          return { repoOrg, repoLogName, description };
+          return { title, description };
         },
       });
 
       if (formValues) {
-        const { repoOrg, repoLogName, description } = formValues;
+        const { title, description } = formValues;
         const updatedProject = {
           _id: projectId,
-          repoorg: repoOrg,
-          repologname: repoLogName,
+          title: title,
           description: description,
         };
         putJSON(
