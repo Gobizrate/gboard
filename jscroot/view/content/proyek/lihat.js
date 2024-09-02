@@ -1,7 +1,4 @@
-import {
-  getValue,
-  onClick,
-} from "https://cdn.jsdelivr.net/gh/jscroot/element@0.1.7/croot.js";
+import {getValue,onClick,setValue} from "https://cdn.jsdelivr.net/gh/jscroot/lib@0.0.4/element.js";
 import { validatePhoneNumber } from "https://cdn.jsdelivr.net/gh/jscroot/validate@0.0.2/croot.js";
 import { getCookie } from "https://cdn.jsdelivr.net/gh/jscroot/cookie@0.0.1/croot.js";
 import { addCSSIn } from "https://cdn.jsdelivr.net/gh/jscroot/element@0.1.5/croot.js";
@@ -220,6 +217,7 @@ function uploadMenuFile(){
 }
 
 function runafterUploadFileMenu(result){
+  setValue('id',result.url);
   console.log(result);
 
 }
