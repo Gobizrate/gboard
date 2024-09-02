@@ -194,34 +194,22 @@ function addMemberButtonListeners() {
 // Add project event listener
 document.getElementById("addButton").addEventListener("click", () => {
   Swal.fire({
-    title: "Add New Project",
+    title: "Add New Lapak",
     html: `
             <div class="field">
-                <label class="label">Project Name</label>
+                <label class="label">Lapak User Name</label>
                 <div class="control">
                     <input class="input" type="text" id="name" placeholder="huruf kecil tanpa spasi boleh pakai - dan _">
                 </div>
             </div>
             <div class="field">
-                <label class="label">WhatsApp Group ID</label>
+                <label class="label">Judul Lapak</label>
                 <div class="control">
-                    <input class="input" type="text" id="wagroupid" placeholder="minta group id ke bot">
+                    <input class="input" type="text" id="title" placeholder="minta group id ke bot">
                 </div>
             </div>
             <div class="field">
-                <label class="label">Nama Repo Organisasi</label>
-                <div class="control">
-                    <input class="input" type="text" id="repoorg" placeholder="repo organisasi">
-                </div>
-            </div>
-            <div class="field">
-                <label class="label">Nama Repo Log Meeting</label>
-                <div class="control">
-                    <input class="input" type="text" id="repologname" placeholder="repo log meeting">
-                </div>
-            </div>
-            <div class="field">
-                <label class="label">Description</label>
+                <label class="label">Deskripsi</label>
                 <div class="control">
                     <textarea class="textarea" id="description" placeholder="Tulis deskripsi proyek Kakak"></textarea>
                 </div>
@@ -232,13 +220,11 @@ document.getElementById("addButton").addEventListener("click", () => {
     cancelButtonText: "Cancel",
     preConfirm: () => {
       const name = Swal.getPopup().querySelector("#name").value;
-      const wagroupid = Swal.getPopup().querySelector("#wagroupid").value;
+      const title = Swal.getPopup().querySelector("#title").value;
       const description = Swal.getPopup().querySelector("#description").value;
-      const repoOrg = Swal.getPopup().querySelector("#repoorg").value;
-      const repoLogName = Swal.getPopup().querySelector("#repologname").value;
 
       const namePattern = /^[a-z0-9_-]+$/;
-      if (!name || !wagroupid || !description || !repoOrg || !repoLogName) {
+      if (!name || !title || !description ) {
         Swal.showValidationMessage(`Please enter all fields`);
       } else if (!namePattern.test(name)) {
         Swal.showValidationMessage(
@@ -247,10 +233,8 @@ document.getElementById("addButton").addEventListener("click", () => {
       } else {
         return {
           name: name,
-          wagroupid: wagroupid,
+          title: title,
           description: description,
-          repoorg: repoOrg,
-          repologname: repoLogName,
         };
       }
     },
@@ -258,10 +242,8 @@ document.getElementById("addButton").addEventListener("click", () => {
     if (result.isConfirmed) {
       let resultData = {
         name: getValue("name"),
-        wagroupid: getValue("wagroupid"),
+        wagroupid: getValue("title"),
         description: getValue("description"),
-        repoorg: getValue("repoorg"),
-        repologname: getValue("repologname"),
       };
       if (getCookie("login") === "") {
         redirect("/signin");
