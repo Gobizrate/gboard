@@ -221,13 +221,12 @@ async function uploadMenuFile(){
   const targetUrl = backend.upload.menu+document.getElementById("project-id").value; // Ganti dengan URL backend Anda
   const fileInputId = 'fileInput';
   const formDataName = 'menufile'; // Sesuaikan dengan nama form-data di backend
+  await postFileWithHeader(targetUrl, "login", getCookie('login'), fileInputId, formDataName,runafterUploadFileMenu);
+}
 
-  try {
-      const result = await postFileWithHeader(targetUrl, "login", getCookie('login'), fileInputId, formDataName);
-      document.getElementById('response').textContent = `Upload Successful: ${JSON.stringify(result)}`;
-  } catch (error) {
-      document.getElementById('response').textContent = `Upload Failed: ${error.message}`;
-  }
+function runafterUploadFileMenu(result){
+  console.log(result);
+
 }
 
 // Add project event listener
