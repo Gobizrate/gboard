@@ -70,11 +70,11 @@ function getResponseFunction(result) {
                   (mn, index) =>
                     `
                     <div class="tag is-success mb-3">
-                       ${index + 1}. ${mn.name}
+                       ${index + 1}. ${mn.name} - ${mn.price}
                       <button class="delete is-small removeMemberButton" data-project-name="${
                         project.name
-                      }" data-member-phonenumber="${
-                      mn.price
+                      }" data-menu-_id="${
+                      mn._id
                     }"></button>
                     </div>
                   `
@@ -344,25 +344,25 @@ function addRemoveMemberButtonListeners() {
   document.querySelectorAll(".removeMemberButton").forEach((button) => {
     button.addEventListener("click", async (event) => {
       const projectName = button.getAttribute("data-project-name");
-      const memberPhoneNumber = button.getAttribute("data-member-phonenumber");
+      const menuid = button.getAttribute("data-menu-_id");
 
       const result = await Swal.fire({
-        title: "Hapus member ini?",
+        title: "Hapus menu ini?",
         text: "Kamu tidak dapat mengembalikan aksi ini!",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonText: "Hapus member",
+        confirmButtonText: "Hapus menu",
         cancelButtonText: "Kembali",
       });
 
       if (result.isConfirmed) {
         const memberWillBeDeleted = {
           project_name: projectName,
-          phone_number: memberPhoneNumber,
+          menu_id: menuid,
         };
 
         deleteJSON(
-          backend.project.anggota,
+          backend.project.menu,
           "login",
           getCookie("login"),
           memberWillBeDeleted,
