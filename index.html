@@ -1,24 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Domyikado Dashboard</title>
-    <!--========== jscroot ==========-->
-    <script src="jscroot/index.js" type="module"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
-  </head>
-  <body>
-    <!--========== HEADER ==========-->
-    <header class="header">
-      <div class="header__container" id="header__container"></div>
-    </header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard with Store, Food, and App Ratings</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+    <!-- Sidebar -->
+    <div class="flex">
+      <aside class="w-1/5 bg-white shadow-md h-[calc(100vh-20px)] p-4 mb-0">
+            <h1 class="text-2xl font-bold mb-6">Dashboard</h1>
+            <nav>
+                <a href="#" class="block p-2 text-gray-600 hover:bg-gray-200 rounded">Overview</a>
+                <a href="#" class="block p-2 text-gray-600 hover:bg-gray-200 rounded">Product</a>
+                <a href="#" class="block p-2 text-gray-600 hover:bg-gray-200 rounded">Customer</a>
+                <a href="#" class="block p-2 text-gray-600 hover:bg-gray-200 rounded">Order</a>
+                <a href="#" class="block p-2 text-gray-600 hover:bg-gray-200 rounded">Message</a>
+                <a href="#" class="block p-2 text-gray-600 hover:bg-gray-200 rounded">Analytics</a>
+                <a href="#" class="block p-2 text-gray-600 hover:bg-gray-200 rounded">Settings</a>
+            </nav>
+        </aside>
 
-    <!--========== NAV ==========-->
-    <div class="nav" id="navbar"></div>
+        <!-- Main Content -->
+        <div class="flex-grow p-6">
+            <h2 class="text-xl font-semibold mb-4">Welcome, User!</h2>
 
-    <!--========== CONTENTS ==========-->
-    <main id="content"></main>
-  </body>
-</html>
+            <!-- Dashboard Stats -->
+            <div class="grid grid-cols-4 gap-4 mb-6">
+                <div class="bg-white p-4 rounded-lg shadow">
+                    <p class="text-gray-600">Total Orders</p>
+                    <p class="text-2xl font-semibold"></p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow">
+                    <p class="text-gray-600">Total Delivery</p>
+                    <p class="text-2xl font-semibold"></p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow">
+                    <p class="text-gray-600">Total Customers</p>
+                    <p class="text-2xl font-semibold"></p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow">
+                    <p class="text-gray-600">Total Penghasilan</p>
+                    <p class="text-2xl font-semibold"></p>
+                </div>
+            </div>
+
+            <!-- Ratings Section -->
+            <h3 class="text-lg font-semibold mb-4">Ratings</h3>
+            <div class="grid grid-cols-3 gap-4">
+                <!-- Store Rating -->
+                <div class="bg-white p-4 rounded-lg shadow">
+                    <p class="text-gray-700 font-semibold">Rating Toko</p>
+                    <div class="flex items-center mt-1">
+                        <span class="text-yellow-500">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                        <span class="ml-2 text-sm text-gray-600">(4.0)</span>
+                    </div>
+                    <p class="text-gray-500 mt-2">"Toko yang bagus dengan berbagai pilihan barang."</p>
+                </div>
+
+                <!-- Food Rating -->
+                <div class="bg-white p-4 rounded-lg shadow">
+                    <p class="text-gray-700 font-semibold">Rating Makanan</p>
+                    <div class="flex items-center mt-1">
+                        <span class="text-yellow-500">&#9733;&#9733;&#9733;&#9734;&#9734;</span>
+                        <span class="ml-2 text-sm text-gray-600">(3.5)</span>
+                    </div>
+                    <p class="text-gray-500 mt-2">"Kualitas makanannya bagus, tetapi masih bisa ditingkatkan."</p>
+                </div>
+
+                <!-- App Rating -->
+                <div class="bg-white p-4 rounded-lg shadow">
+                    <p class="text-gray-700 font-semibold">Rating Apps</p>
+                    <div class="flex items-center mt-1">
+                        <span class="text-yellow-500">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                        <span class="ml-2 text-sm text-gray-600">(5.0)</span>
+                    </div>
+                    <p class="text-gray-500 mt-2">"Ramah pengguna dan sangat responsif."</p>
+                </div>
+            </div>
+
+             <!-- Popular Stores Section -->
+             <h3 class="text-lg font-semibold mt-6 mb-4">Toko Populer</h3>
+             <div class="grid grid-cols-3 gap-4">
+                 <!-- Store Item 1 -->
+                 <div class="bg-white p-4 rounded-lg shadow">
+                     <img src="store1.jpg" alt="Store 1" class="w-full h-32 object-cover rounded">
+                     <p class="text-gray-700 font-semibold mt-2">Nama Toko 1</p>
+                     <p class="text-gray-500">"Dikenal dengan pelayanan yang luar biasa"</p>
+                     <div class="flex items-center mt-1">
+                         <span class="text-yellow-500">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                         <span class="ml-2 text-sm text-gray-600">(4.0)</span>
+                     </div>
+                 </div>
+ 
+                 <!-- Store Item 2 -->
+                 <div class="bg-white p-4 rounded-lg shadow">
+                     <img src="store2.jpg" alt="Store 2" class="w-full h-32 object-cover rounded">
+                     <p class="text-gray-700 font-semibold mt-2">Nama Toko 2</p>
+                     <p class="text-gray-500">"Sangat bervariasi"</p>
+                     <div class="flex items-center mt-1">
+                         <span class="text-yellow-500">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                         <span class="ml-2 text-sm text-gray-600">(4.2)</span>
+                     </div>
+                 </div>
+ 
+                 <!-- Store Item 3 -->
+                 <div class="bg-white p-4 rounded-lg shadow">
+                     <img src="store3.jpg" alt="Store 3" class="w-full h-32 object-cover rounded">
+                     <p class="text-gray-700 font-semibold mt-2">Nama Toko 3</p>
+                     <p class="text-gray-500">"Harganya Sangat Terjangkau"</p>
+                     <div class="flex items-center mt-1">
+                         <span class="text-yellow-500">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                         <span class="ml-2 text-sm text-gray-600">(4.1)</span>
+                     </div>
+                 </div>
+             </div>
+ 
+             <!-- Popular Menu Section -->
+             <h3 class="text-lg font-semibold mt-6 mb-4">Menu Popular</h3>
+             <div class="grid grid-cols-3 gap-4">
+                 <!-- Menu Item 1 -->
+                 <div class="bg-white p-4 rounded-lg shadow">
+                     <img src="spaghetti.jpg" alt="Spaghetti" class="w-full h-32 object-cover rounded">
+                     <p class="text-gray-700 font-semibold mt-2">Spaghetti Seafood</p>
+                      <p class="text-gray-500">Rp 25.000</p> <!-- Corrected the currency format -->
+                     <div class="flex items-center mt-1">
+                         <span class="text-yellow-500">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                         <span class="ml-2 text-sm text-gray-600">(4.0)</span>
+                     </div>
+                 </div>
+ 
+                 <!-- Menu Item 2 -->
+                 <div class="bg-white p-4 rounded-lg shadow">
+                  <img src="fried_noodle.jpg" alt="Mie Goreng" class="w-full h-32 object-cover rounded">
+                  <p class="text-gray-700 font-semibold mt-2">Mie Goreng</p>
+                   <p class="text-gray-500">Rp 15.000</p> <!-- Corrected the currency format -->
+                  <div class="flex items-center mt-1">
+                      <span class="text-yellow-500">&#9733;&#9733;&#9733;&#9734;&#9734;</span>
+                      <span class="ml-2 text-sm text-gray-600">(3.5)</span>
+                  </div>
+              </div>
+ 
+                 <!-- Menu Item 3 -->
+                 <div class="bg-white p-4 rounded-lg shadow">
+                     <img src="pork_meatball.jpg" alt="Martabak" class="w-full h-32 object-cover rounded">
+                     <p class="text-gray-700 font-semibold mt-2">Martabak</p>
+                      <p class="text-gray-500">Rp 20.000</p> <!-- Corrected the currency format -->
+                     <div class="flex items-center mt-1">
+                         <span class="text-yellow-500">&#9733;&#9733;&#9733;&#9734;&#9734;</span>
+                         <span class="ml-2 text-sm text-gray-600">(3.0)</span>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </body>
+ </html>
