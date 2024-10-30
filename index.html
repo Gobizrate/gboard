@@ -4,140 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
 </head>
-<body class="bg-gray-50 font-sans text-gray-800">
-
-    <!-- Container -->
-    <div class="flex min-h-screen">
-
-        <!-- Sidebar -->
-        <aside class="w-64 bg-white shadow-md">
-            <div class="p-6">
-                <h1 class="text-2xl font-bold text-orange-600">Restro</h1>
-            </div>
-            <nav class="mt-8">
-                <ul>
-                    <li class="py-3 px-6 hover:bg-gray-100">
-                        <a href="#" class="text-gray-700">Orders</a>
-                    </li>
-                    <li class="py-3 px-6 bg-orange-100 rounded-lg">
-                        <a href="#" class="text-orange-600 font-semibold">Business Metrics</a>
-                    </li>
-                    <li class="py-3 px-6 hover:bg-gray-100">
-                        <a href="#" class="text-gray-700">Menu</a>
-                    </li>
-                    <li class="py-3 px-6 hover:bg-gray-100">
-                        <a href="#" class="text-gray-700">Discounts</a>
-                    </li>
-                    <li class="py-3 px-6 hover:bg-gray-100">
-                        <a href="#" class="text-gray-700">Restaurant Tiering</a>
-                    </li>
-                    <li class="py-3 px-6 hover:bg-gray-100">
-                        <a href="#" class="text-gray-700">Restaurant Info</a>
-                    </li>
-                    <li class="py-3 px-6 hover:bg-gray-100">
-                        <a href="#" class="text-gray-700">Contact</a>
-                    </li>
-                </ul>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h1>Restro</h1>
+            <nav>
+                <a href="#"><i class="icon-orders"></i> Orders</a>
+                <a href="#" class="active"><i class="icon-metrics"></i> Business Metrics</a>
+                <a href="#"><i class="icon-menu"></i> Menu</a>
+                <a href="#"><i class="icon-discounts"></i> Discounts</a>
+                <a href="#"><i class="icon-tiering"></i> Restaurant Tiering</a>
+                <a href="#"><i class="icon-info"></i> Restaurant Info</a>
+                <a href="#"><i class="icon-contact"></i> Contact</a>
             </nav>
+            <div class="download">
+                <p>Your latest tax invoice is ready for download.</p>
+                <button>Download</button>
+            </div>
         </aside>
-         <!-- Main Content -->
-         <main class="flex-1 p-10">
-            <!-- Header -->
-            <div class="flex justify-between items-center mb-10">
-                <h2 class="text-2xl font-bold">Statistics</h2>
-                <input type="text" placeholder="Search here" class="p-2 rounded-lg border border-gray-300 w-64">
-            </div>
-
-             <!-- Overview and Metrics -->
-             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Performance Status -->
-                <div class="bg-white p-6 rounded-lg shadow">
-                    <h3 class="text-lg font-semibold text-gray-600">Performance Status</h3>
-                    <p class="text-3xl font-bold text-yellow-500 mt-2">GOLD</p>
+        <main class="main-content">
+            <header class="header">
+                <h2>Statistics</h2>
+                <input type="text" placeholder="Search here">
+                <div class="profile">
+                    <img src="profile.jpg" alt="Profile Picture">
                 </div>
-
-                 <!-- Order Acceptance -->
-                <div class="bg-white p-6 rounded-lg shadow">
-                    <h3 class="text-lg font-semibold text-gray-600">Order Acceptance</h3>
-                    <p class="text-3xl font-bold text-green-500 mt-2">88.9%</p>
+            </header>
+            <nav class="sub-navigation">
+                <a href="#" class="active">Overview</a>
+                <a href="#">Revenue</a>
+                <a href="#">Operations</a>
+                <a href="#">Customer Ratings</a>
+            </nav>
+            <section class="dashboard">
+                <!-- Tambahkan ikon dan struktur mirip gambar referensi di sini -->
+                <div class="card performance-status">
+                    <h3>Performance Status</h3>
+                    <p>GOLD</p>
                 </div>
-
-             <!-- Restaurant Ratings -->
-                <div class="bg-white p-6 rounded-lg shadow">
-                    <h3 class="text-lg font-semibold text-gray-600">Restaurant Ratings</h3>
-                    <p class="text-3xl font-bold text-blue-500 mt-2">4.88</p>
-                    <div class="mt-4 space-y-2">
-                        <div class="flex items-center">
-                            <span class="mr-2">😊</span>
-                            <div class="w-full bg-gray-200 rounded-full h-2">
-                                <div class="bg-green-500 h-2 rounded-full" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div class="flex items-center">
-                            <span class="mr-2">😐</span>
-                            <div class="w-full bg-gray-200 rounded-full h-2">
-                                <div class="bg-yellow-500 h-2 rounded-full" style="width: 8%"></div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="card order-acceptance">
+                    <h3>Order Acceptance</h3>
+                    <p>88.9%</p>
                 </div>
-
-             <!-- Out of Stock -->
-                <div class="bg-white p-6 rounded-lg shadow">
-                    <h3 class="text-lg font-semibold text-gray-600">Out of Stock</h3>
-                    <p class="text-3xl font-bold text-red-500 mt-2">2.5%</p>
+                <div class="card restaurant-rating">
+                    <h3>Restaurant Ratings</h3>
+                    <p>4.88</p>
                 </div>
-
-             <!-- Orders Delivered -->
-                <div class="bg-white p-6 rounded-lg shadow">
-                    <h3 class="text-lg font-semibold text-gray-600">Orders Delivered</h3>
-                    <p class="text-3xl font-bold text-blue-500 mt-2">59,089</p>
-                    <canvas id="ordersChart" class="mt-4 h-32"></canvas>
+                <div class="card out-of-stock">
+                    <h3>Out of Stock</h3>
+                    <p>2.5%</p>
                 </div>
-
-            <!-- Total Earnings -->
-                <div class="bg-white p-6 rounded-lg shadow">
-                    <h3 class="text-lg font-semibold text-gray-600">Total Earnings</h3>
-                    <p class="text-3xl font-bold text-green-500 mt-2">$100,980</p>
-                    <canvas id="earningsChart" class="mt-4 h-32"></canvas>
+                <div class="card orders-delivered">
+                    <h3>Orders Delivered</h3>
+                    <p>59,089</p>
+                    <canvas id="ordersChart"></canvas>
                 </div>
-
-            <!-- Searches -->
-                <div class="bg-white p-6 rounded-lg shadow col-span-1 md:col-span-2">
-                    <h3 class="text-lg font-semibold text-gray-600">Searches for your business</h3>
-                    <p class="text-3xl font-bold text-blue-500 mt-2">59,000</p>
-                    <div class="flex items-center justify-between mt-4">
-                        <div class="text-gray-600">Direct</div>
-                        <div class="text-gray-600">Business Ads</div>
-                    </div>
-                    <canvas id="searchesChart" class="mt-4 h-32"></canvas>
+                <div class="card total-earnings">
+                    <h3>Total Earnings</h3>
+                    <p>$100,980</p>
+                    <canvas id="earningsChart"></canvas>
                 </div>
-            </div>
+                <div class="card searches">
+                    <h3>Searches for your business</h3>
+                    <p>59,000</p>
+                    <div class="chart"></div>
+                </div>
+            </section>
         </main>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        // Orders Chart
-        const ordersCtx = document.getElementById('ordersChart').getContext('2d');
-        new Chart(ordersCtx, {
-            type: 'line',
-            data: {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-                datasets: [{
-                    label: 'Orders',
-                    data: [40000, 50000, 60000, 55000, 70000, 59089],
-                    backgroundColor: 'rgba(59, 130, 246, 0.2)',
-                    borderColor: 'rgba(59, 130, 246, 1)',
-                    borderWidth: 2
-                }]
-            }
-        });
-
-
-    </script>
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="jscroot/view/dashboard.js"></script>
 </body>
 </html>
