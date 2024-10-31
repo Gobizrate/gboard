@@ -27,7 +27,7 @@ body {
 }
 
 .sidebar h1 {
-    color: #ff5722;
+    color: #0313f8;
     font-size: 1.5em;
     font-weight: bold;
 }
@@ -47,7 +47,7 @@ body {
 }
 
 .sidebar nav a.active {
-    background-color: #ff5722;
+    background-color: #0313f8;
     color: #fff;
     border-radius: 8px;
 }
